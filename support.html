@@ -1,0 +1,314 @@
+<title>Close Cords Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F6F8F7;
+    --panel: #FFFFFF;
+    --panel-alt: #EEF3F0;
+    --ink: #14201B;
+    --ink-2: #3E4C46;
+    --muted: #6B7A73;
+    --rule: #D7E0DB;
+    --rule-strong: #B9C7C0;
+    --accent: #0E8F63;
+    --accent-ink: #0B6E4D;
+    --accent-soft: #DDF1E8;
+    --shadow: 0 1px 2px rgba(20, 32, 27, 0.06), 0 8px 24px rgba(20, 32, 27, 0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1512;
+      --panel: #131C18;
+      --panel-alt: #182420;
+      --ink: #E7EEEA;
+      --ink-2: #C3D0C9;
+      --muted: #8FA098;
+      --rule: #22302A;
+      --rule-strong: #35463E;
+      --accent: #34D399;
+      --accent-ink: #5FE3B2;
+      --accent-soft: #143528;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1512;
+    --panel: #131C18;
+    --panel-alt: #182420;
+    --ink: #E7EEEA;
+    --ink-2: #C3D0C9;
+    --muted: #8FA098;
+    --rule: #22302A;
+    --rule-strong: #35463E;
+    --accent: #34D399;
+    --accent-ink: #5FE3B2;
+    --accent-soft: #143528;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    padding: 0 20px 96px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; }
+
+  header { padding: 56px 0 28px; border-bottom: 1px solid var(--rule); }
+  .eyebrow {
+    font-family: "JetBrains Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(34px, 5.2vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .meta a { color: var(--accent-ink); }
+
+  .contact-card {
+    margin: 32px 0 8px;
+    padding: 22px 24px 20px;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+  .contact-card h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 10px;
+    letter-spacing: -0.005em;
+  }
+  .contact-card p { margin: 0 0 10px; }
+  .contact-card p:last-child { margin-bottom: 0; }
+  .email {
+    font-family: "JetBrains Mono", Menlo, Consolas, monospace;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  main { padding-top: 28px; }
+  section { padding: 24px 0 8px; }
+  section + section { border-top: 1px solid var(--rule); }
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.008em;
+    margin: 8px 0 18px;
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 24px 0 8px;
+    color: var(--ink);
+  }
+  h3:first-of-type { margin-top: 4px; }
+  p { margin: 0 0 14px; max-width: 66ch; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; max-width: 66ch; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--muted); }
+  a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  b, strong { font-weight: 600; }
+
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 14px;
+  }
+  .checklist li {
+    position: relative;
+    padding-left: 28px;
+    margin: 10px 0;
+  }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .note {
+    margin: 16px 0;
+    padding: 14px 18px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    max-width: 66ch;
+  }
+  .note p { margin: 0; }
+  .note b { color: var(--accent-ink); }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 16.5px; }
+    h2 { font-size: 23px; }
+    .contact-card { padding: 18px 18px 16px; }
+  }
+</style>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Close Cords</p>
+    <h1>Support</h1>
+    <div class="meta">
+      <span>For the Close Cords app on iPhone</span>
+      <span><a href="./">Privacy Policy</a></span>
+      <span><a href="terms.html">Terms of Service</a></span>
+    </div>
+  </header>
+
+  <aside class="contact-card">
+    <h2>Get in touch</h2>
+    <p>Questions, bugs, or anything else:</p>
+    <p class="email"><a href="mailto:closecords.app@gmail.com">closecords.app@gmail.com</a></p>
+    <p>We read every message. It helps enormously if you include your iPhone model, your iOS version, and what you were doing when the problem happened.</p>
+  </aside>
+
+  <main>
+
+    <section>
+      <h2>Getting started</h2>
+
+      <h3>What is Close Cords?</h3>
+      <p>Close Cords shows you what people physically near you are listening to, and lets them see what you're playing. It works over Bluetooth, directly between phones — there are no accounts, no servers, and no feed of strangers from across the world. Just the people in the room.</p>
+
+      <h3>What do I need?</h3>
+      <ul class="checklist">
+        <li>An iPhone with Bluetooth turned on</li>
+        <li>An active <b>Apple Music</b> subscription</li>
+        <li>Other people nearby who also have the app open</li>
+      </ul>
+
+      <h3>How do I start sharing?</h3>
+      <p>Tap the <b>radar button</b> in the top-right corner, or turn on <b>Broadcasting Signal</b> in the Profile tab. The first time, you'll see a screen explaining exactly what gets shared. Nothing is sent until you tap <b>Start broadcasting</b> on that screen.</p>
+    </section>
+
+    <section>
+      <h2>Nobody appears in my feed</h2>
+      <p>This is the most common question, and it's usually one of these.</p>
+
+      <h3>Is anyone else nearby actually using the app?</h3>
+      <p>Close Cords only shows people running Close Cords. If nobody within Bluetooth range has the app open, the feed stays empty — that's the app working correctly, not a fault. It's best tried with a friend in the same room to start.</p>
+
+      <h3>Do you both have broadcasting on?</h3>
+      <p>Seeing other people and being seen are separate. You can see others without broadcasting, but they can only see you once <b>your</b> radar button is green.</p>
+
+      <h3>Are you close enough?</h3>
+      <p>Range is roughly 10 to 15 metres (30 to 50 feet) in the open, and a lot less through walls, floors, or a crowd. Bluetooth is sensitive to what's in between — including bodies and bags.</p>
+
+      <h3>Is the app open?</h3>
+      <p>Close Cords only shares while the app is open on screen. Switch to another app or lock the phone and broadcasting stops within seconds. This is deliberate — it's what we promise in the <a href="./">Privacy Policy</a> — but it does mean two people both need the app in front of them.</p>
+
+      <h3>Did you allow Bluetooth?</h3>
+      <p>Check <b>Settings › Close Cords › Bluetooth</b> is on. Without it, nothing is sent or received.</p>
+
+      <p>Still nothing? Tap <b>Refresh Close Cords</b> on the feed to restart the scan, and if that doesn't help, email us.</p>
+    </section>
+
+    <section>
+      <h2>Apple Music</h2>
+
+      <h3>Do I need a subscription?</h3>
+      <p>Yes. Close Cords reads what you're playing from Apple Music and controls playback through your own account, so an active subscription is required. We don't provide music ourselves.</p>
+
+      <h3>How do I connect it?</h3>
+      <p>Profile tab → <b>Connect to Apple Music</b>. iOS will ask permission for <b>Media &amp; Apple Music</b>; the app can't see what you're playing without it.</p>
+
+      <h3>It says Apple Music isn't connected</h3>
+      <p>The app will tell you which part failed. The usual causes:</p>
+      <ul>
+        <li><b>Permission was denied.</b> Turn it on in <b>Settings › Close Cords › Media &amp; Apple Music</b>.</li>
+        <li><b>No active subscription</b> on the Apple ID signed into the phone.</li>
+        <li><b>No connection.</b> Close Cords needs the internet to look up track details and artwork.</li>
+      </ul>
+
+      <h3>Nothing shows on the Now Playing tab</h3>
+      <p>Start a song in Apple Music first — Close Cords reflects what's already playing rather than starting it for you. If a song is playing and the tab is still empty, disconnect and reconnect Apple Music from the Profile tab.</p>
+    </section>
+
+    <section>
+      <h2>Privacy and your data</h2>
+
+      <h3>What do other people see?</h3>
+      <p>Only your alias (or display name, if you've set one and Anonymous Mode is off), and the title, artist, and album artwork of what you're playing right now. Never your location — the app has no access to it at all.</p>
+
+      <h3>How do I stop sharing?</h3>
+      <p>Tap the radar button, or turn off <b>Broadcasting Signal</b> in the Profile tab. It stops immediately. <b>Anonymous Mode</b> keeps you broadcasting under your random alias with your display name withheld.</p>
+
+      <h3>How do I change my name?</h3>
+      <p>Profile tab. Tap <b>New</b> to generate a fresh random alias, or set a display name of your own.</p>
+
+      <h3>How do I delete my data?</h3>
+      <p>Delete the app. Everything lives on your phone — your profile, settings, and history go with it. Disconnect Apple Music first so the stored sign-in is cleared right away.</p>
+
+      <p>The full details are in the <a href="./">Privacy Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Reporting a problem</h2>
+      <p>Email <a href="mailto:closecords.app@gmail.com">closecords.app@gmail.com</a>. To help us find it quickly, tell us:</p>
+      <ul>
+        <li>your iPhone model and iOS version</li>
+        <li>what you expected to happen, and what happened instead</li>
+        <li>whether it happens every time or just occasionally</li>
+        <li>a screenshot, if there's something to see</li>
+      </ul>
+      <div class="note">
+        <p><b>Security issues.</b> If you've found a vulnerability, please email us directly rather than posting publicly, and give us a chance to fix it first.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Close Cords · Support</span>
+    <a href="./">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </footer>
+
+</div>
