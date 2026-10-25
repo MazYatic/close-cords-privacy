@@ -268,8 +268,8 @@
     <p class="eyebrow">Close Cords</p>
     <h1>Privacy Policy</h1>
     <div class="meta">
-      <span>Effective <b>11 September 2026</b></span>
-      <span>Applies to the Close Cords app for iPhone and Android</span>
+      <span>Effective <b>25 October 2026</b></span>
+      <span>Applies to the Close Cords app for iPhone</span>
       <span>See also the <a href="terms.html">Terms of Service</a></span>
     </div>
   </header>
@@ -296,7 +296,7 @@
       <h2><span class="n">2</span>How Close Cords handles data</h2>
       <p>Close Cords works differently from most apps, and that shapes everything below.</p>
       <ul>
-        <li><b>No servers.</b> We don't operate a backend. Nothing you do in the app is uploaded to us, and we have no database of users. The only network requests the app makes are to Spotify, Apple Music, and the image servers that host album artwork.</li>
+        <li><b>No servers.</b> We don't operate a backend. Nothing you do in the app is uploaded to us, and we have no database of users. The only network requests the app makes are to Apple Music and the image servers that host album artwork.</li>
         <li><b>No accounts.</b> You don't sign up, and we don't ask for your email, phone number, or password. Your identity in the app is a display name and a randomly generated alias that exist only on your phone.</li>
         <li><b>Device to device.</b> The information you choose to share travels directly from your phone to nearby phones over Bluetooth Low Energy. It doesn't pass through us.</li>
       </ul>
@@ -325,7 +325,7 @@
             </tr>
             <tr>
               <td class="k">Current track<span class="sub">title, artist, album art</span></td>
-              <td>Fetched from Spotify or Apple Music; held in memory</td>
+              <td>Fetched from Apple Music; held in memory</td>
               <td>Refreshed every few seconds; not stored</td>
               <td>People nearby, while you're broadcasting</td>
             </tr>
@@ -336,15 +336,9 @@
               <td>Only you</td>
             </tr>
             <tr>
-              <td class="k">Spotify sign-in</td>
-              <td>Your phone's secure keychain</td>
-              <td>Until you disconnect Spotify or delete the app</td>
-              <td>Only the app, to talk to Spotify on your behalf</td>
-            </tr>
-            <tr>
-              <td class="k">Apple Music permission</td>
-              <td>Managed by iOS</td>
-              <td>Until you revoke it in Settings</td>
+              <td class="k">Apple Music sign-in<span class="sub">permission and access token</span></td>
+              <td>Managed by iOS; token in your phone's secure keychain</td>
+              <td>Until you disconnect it or revoke access in Settings</td>
               <td>Only the app</td>
             </tr>
             <tr>
@@ -366,7 +360,7 @@
       <ul>
         <li>your <b>alias</b>, and your <b>display name</b> if Anonymous Mode is off;</li>
         <li>the <b>title, artist, and album artwork link</b> of the track you're playing right now;</li>
-        <li>which service it's playing on (Spotify or Apple Music).</li>
+        <li>which music service it's playing on.</li>
       </ul>
       <p>That's the complete list. It does not include your location, your account details, your listening history, or anything else.</p>
       <h3>Who can see it</h3>
@@ -377,45 +371,31 @@
       <p>Tap the radar button in the app, or turn off <b>Broadcasting Signal</b> in the Profile tab. It stops immediately. You can also switch on <b>Anonymous Mode</b> to keep broadcasting under your alias only, with your display name withheld.</p>
     </section>
 
-    <section id="spotify">
-      <h2><span class="n">5</span>Spotify</h2>
-      <p>If you connect Spotify, you sign in through Spotify's own login page; Close Cords never sees your Spotify password. Spotify then gives the app limited permissions, each of which is used for one thing:</p>
-      <ul>
-        <li><code>user-read-currently-playing</code> and <code>user-read-playback-state</code> — to know what you're playing, so it can be shown and broadcast, and to know which playback controls Spotify currently allows.</li>
-        <li><code>user-modify-playback-state</code> — so the play, pause, skip and shuffle buttons in the app control your Spotify.</li>
-        <li><code>user-read-recently-played</code> — to show your last track when nothing is currently playing.</li>
-        <li><code>user-read-private</code> — to read your display name and whether you have Spotify Premium, which playback control requires.</li>
-      </ul>
-      <p>The sign-in credentials Spotify issues are stored in your phone's secure keychain and used only to talk to Spotify on your behalf. We don't share anything from your Spotify account with anyone. The track you're playing is shared with nearby users only as described in section 4.</p>
-      <p><b>Disconnecting.</b> Tap <b>Spotify Connected</b> in the Profile tab to disconnect. This deletes the stored credentials and the Spotify data the app was holding, and the app stops reading from your Spotify account. You can also revoke Close Cords from your Spotify account settings at any time.</p>
-      <p>Spotify's handling of your account is governed by <a href="https://www.spotify.com/legal/privacy-policy/">Spotify's Privacy Policy</a>. Album artwork and track details shown in the app are provided by Spotify, and links open in Spotify.</p>
-    </section>
-
     <section id="apple">
-      <h2><span class="n">6</span>Apple Music</h2>
+      <h2><span class="n">5</span>Apple Music</h2>
       <p>If you connect Apple Music, iOS asks you to allow Close Cords access to <b>Media &amp; Apple Music</b>. With that permission the app can see what the Music app is playing, look up album artwork in the Apple Music catalogue, and control playback. It does not read your library or listening history beyond the current track.</p>
       <p>Your Apple Music sign-in is handled by iOS and Apple; the app receives a token it uses only to talk to Apple Music on your behalf. You can revoke access at any time in <b>Settings › Privacy &amp; Security › Media &amp; Apple Music</b>. Apple's handling of your account is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
     </section>
 
     <section id="bluetooth">
-      <h2><span class="n">7</span>Bluetooth, and why there's no location</h2>
+      <h2><span class="n">6</span>Bluetooth, and why there's no location</h2>
       <p>Close Cords uses Bluetooth Low Energy for two things: to broadcast the packet described in section 4, and to listen for the same packet from others. Discovery works by proximity alone. The app never requests, reads, or infers your geographic location — there is no GPS, no map, and no record of where you've been.</p>
       <p>On Android 12 and later, the app declares its Bluetooth scanning as <em>not used for location</em>, so the system doesn't ask for location permission. On older Android versions the operating system requires location permission for any Bluetooth scan; if you're prompted there, that is an Android requirement — the app still never uses your location.</p>
       <p>The app may keep scanning and broadcasting briefly while in the background so that you can be discovered with your phone in your pocket. Broadcasting stops when the app is closed.</p>
     </section>
 
     <section id="history">
-      <h2><span class="n">8</span>Historical Cords</h2>
+      <h2><span class="n">7</span>Historical Cords</h2>
       <p>When you're near someone who is broadcasting, their alias (or display name) and the track they were playing appear in the Close Cords feed and are kept in <b>Historical Cords</b> so you can look back at who you crossed paths with. Each entry is <b>deleted automatically one hour</b> after you were last near that person. You can also clear the whole list at any time with the <b>Clear</b> button. This list never leaves your phone.</p>
     </section>
 
     <section id="crash">
-      <h2><span class="n">9</span>Crash reporting</h2>
-      <p>To find and fix bugs, the app sends a report to <a href="https://sentry.io/privacy/">Sentry</a> when it crashes. A report contains technical details — the error, the screen you were on, your device model and operating system version, and the app version. It does <b>not</b> include your name, alias, what you were playing, who you were near, or anything from your Spotify or Apple Music accounts; the app removes that information before anything is sent. Crash reports are not linked to an identity, and we don't use them for anything other than fixing the app.</p>
+      <h2><span class="n">8</span>Crash reporting</h2>
+      <p>To find and fix bugs, the app sends a report to <a href="https://sentry.io/privacy/">Sentry</a> when it crashes. A report contains technical details — the error, the screen you were on, your device model and operating system version, and the app version. It does <b>not</b> include your name, alias, what you were playing, who you were near, or anything from your Apple Music account; the app removes that information before anything is sent. Crash reports are not linked to an identity, and we don't use them for anything other than fixing the app.</p>
     </section>
 
     <section id="not">
-      <h2><span class="n">10</span>What we don't collect</h2>
+      <h2><span class="n">9</span>What we don't collect</h2>
       <ul>
         <li>Your location, at any precision.</li>
         <li>Your contacts, photos, calendar, or files.</li>
@@ -427,35 +407,35 @@
     </section>
 
     <section id="choices">
-      <h2><span class="n">11</span>Your choices and deleting your data</h2>
+      <h2><span class="n">10</span>Your choices and deleting your data</h2>
       <p>Because everything lives on your phone, you're in direct control of it:</p>
       <ul>
         <li><b>Stop sharing:</b> turn off broadcasting, or turn on Anonymous Mode.</li>
         <li><b>Change your name or alias:</b> Profile tab. Tap <b>New</b> to generate a fresh alias.</li>
-        <li><b>Disconnect Spotify or Apple Music:</b> Profile tab. Disconnecting Spotify deletes the stored sign-in immediately.</li>
+        <li><b>Disconnect Apple Music:</b> Profile tab. This deletes the stored sign-in immediately.</li>
         <li><b>Clear Historical Cords:</b> the <b>Clear</b> button, or wait an hour.</li>
-        <li><b>Delete everything:</b> delete the app. This removes your profile, settings, and history. We recommend disconnecting Spotify first so its stored sign-in is cleared right away; otherwise it's cleared the next time the app is installed.</li>
+        <li><b>Delete everything:</b> delete the app. This removes your profile, settings, and history. We recommend disconnecting Apple Music first so its stored sign-in is cleared right away; otherwise it's cleared the next time the app is installed.</li>
       </ul>
       <p>If you're in a region with data-protection rights (such as the EU, UK, or California), those rights apply. In practice, because we hold no data about you on our systems, there is nothing for us to access, export, or erase on your behalf — the tools above give you that control directly. If you have a question we can help with, contact <a href="mailto:closecords.app@gmail.com">closecords.app@gmail.com</a>.</p>
     </section>
 
     <section id="children">
-      <h2><span class="n">12</span>Children</h2>
-      <p>Close Cords is not directed at children under 13 (or the minimum age for a Spotify or Apple Music account in your country, if higher), and we don't knowingly collect information from them. The app shares what you're listening to with strangers nearby, which isn't appropriate for young children.</p>
+      <h2><span class="n">11</span>Children</h2>
+      <p>Close Cords is not directed at children under 13 (or the minimum age for an Apple Music account in your country, if higher), and we don't knowingly collect information from them. The app shares what you're listening to with strangers nearby, which isn't appropriate for young children.</p>
     </section>
 
     <section id="security">
-      <h2><span class="n">13</span>Security</h2>
-      <p>Spotify credentials are stored in the platform's secure keychain (iOS Keychain or Android Keystore). All communication with Spotify and Apple Music uses HTTPS. Bluetooth broadcasts are, by design, readable by nearby devices — that is how the app works — so the packet is limited to the items in section 4 and never includes credentials or identifiers beyond your chosen name.</p>
+      <h2><span class="n">12</span>Security</h2>
+      <p>Your Apple Music access token is stored in the platform's secure keychain. All communication with Apple Music uses HTTPS. Bluetooth broadcasts are, by design, readable by nearby devices — that is how the app works — so the packet is limited to the items in section 4 and never includes credentials or identifiers beyond your chosen name.</p>
     </section>
 
     <section id="changes">
-      <h2><span class="n">14</span>Changes to this policy</h2>
+      <h2><span class="n">13</span>Changes to this policy</h2>
       <p>If we change what the app does with data, we'll update this page and the effective date at the top. For a material change — anything that shares more than described here — the app will tell you and ask again before it takes effect.</p>
     </section>
 
     <section id="contact">
-      <h2><span class="n">15</span>Contact</h2>
+      <h2><span class="n">14</span>Contact</h2>
       <p>Paul Yazbeck<br>
       <a href="mailto:closecords.app@gmail.com">closecords.app@gmail.com</a></p>
     </section>
@@ -463,7 +443,7 @@
   </main>
 
   <footer>
-    Close Cords · Privacy Policy · effective 11 September 2026 · <a href="terms.html">Terms of Service</a>
+    Close Cords · Privacy Policy · effective 25 October 2026 · <a href="terms.html">Terms of Service</a>
   </footer>
 
 </div>
